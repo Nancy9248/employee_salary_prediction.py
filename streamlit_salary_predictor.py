@@ -25,7 +25,7 @@ clf = RandomForestClassifier(n_estimators=100, random_state=42)
 clf.fit(X, y)
 
 # Streamlit UI
-st.title(" Employee Salary Prediction")
+st.title("Employee Salary Prediction")
 
 st.write("Enter the details below to predict if income is <=50K or >50K.")
 
@@ -71,9 +71,12 @@ def user_input_features():
     features = pd.DataFrame(data, index=[0])
     return features
 
+# Get user input
+input_df = user_input_features()
 
-def user_input_features():
-
+# Show user input
+st.subheader("User Input:")
+st.write(input_df)
 
 # Make prediction
 prediction = clf.predict(input_df)
@@ -81,3 +84,4 @@ prediction_label = label_encoders["income"].inverse_transform(prediction)[0]
 
 st.subheader("Prediction:")
 st.write(f"**Income:** {prediction_label}")
+
