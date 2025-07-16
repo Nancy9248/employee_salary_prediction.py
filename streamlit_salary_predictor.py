@@ -51,23 +51,21 @@ def user_input_features():
 
     native_enc = label_encoders["native-country"].transform([native_country])[0]
 
-    data_dict = {
-        "age": age,
-        "workclass": workclass_enc,
-        "fnlwgt": 0,  # placeholder
-        "education": 0,  # placeholder
-        "education-num": education_num,
-        "marital-status": marital_enc,
-        "occupation": occupation_enc,
-        "relationship": relationship_enc,
-        "race": race_enc,
-        "gender": gender_enc
+   data = {
+    "age": age,
+    "workclass": workclass_enc,
+    "education": education_enc,
+    "marital-status": marital_status_enc,
+    "occupation": occupation_enc,
+    "relationship": relationship_enc,
+    "race": race_enc,
+    "gender": gender_enc,
+    "capital-gain": 0,
+    "capital-loss": 0,
+    "hours-per-week": hours_per_week,
+    "native-country": native_country_enc
+}
 
-        "capital-gain": 0,
-        "capital-loss": 0,
-        "hours-per-week": hours_per_week,
-        "native-country": native_enc,
-    }
     return pd.DataFrame([data_dict])
 
 input_df = user_input_features()
