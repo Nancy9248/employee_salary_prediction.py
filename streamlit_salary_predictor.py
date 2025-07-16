@@ -72,7 +72,8 @@ def user_input_features():
     return features
 
 
-input_df = user_input_features()
+def user_input_features():
+
 
 # Make prediction
 prediction = clf.predict(input_df)
