@@ -47,7 +47,8 @@ def user_input_features():
     occupation_enc = label_encoders["occupation"].transform([occupation])[0]
     relationship_enc = label_encoders["relationship"].transform([relationship])[0]
     race_enc = label_encoders["race"].transform([race])[0]
-    sex_enc = label_encoders["sex"].transform([sex])[0]
+    gender_enc = label_encoders["gender"].transform([gender])[0]
+
     native_enc = label_encoders["native-country"].transform([native_country])[0]
 
     data_dict = {
