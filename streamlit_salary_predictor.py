@@ -52,19 +52,21 @@ def user_input_features():
     native_country_enc = label_encoders["native-country"].transform([native_country])[0]
 
     data = {
-        "age": age,
-        "workclass": workclass_enc,
-        "education": education_enc,
-        "marital-status": marital_status_enc,
-        "occupation": occupation_enc,
-        "relationship": relationship_enc,
-        "race": race_enc,
-        "gender": gender_enc,
-        "capital-gain": 0,
-        "capital-loss": 0,
-        "hours-per-week": hours_per_week,
-        "native-country": native_country_enc
-    }
+    "age": age,
+    "workclass": workclass_enc,
+    "fnlwgt": 100000,  # default or estimated value
+    "education": education_enc,
+    "educational-num": 10,  # default number or based on dropdown
+    "marital-status": marital_status_enc,
+    "occupation": occupation_enc,
+    "relationship": relationship_enc,
+    "race": race_enc,
+    "gender": gender_enc,
+    "capital-gain": 0,
+    "capital-loss": 0,
+    "hours-per-week": hours_per_week,
+    "native-country": native_country_enc
+}
 
     features = pd.DataFrame(data, index=[0])
     return features
