@@ -31,42 +31,43 @@ st.write("Enter the details below to predict if income is <=50K or >50K.")
 
 def user_input_features():
     age = st.slider("Age", 17, 90, 30)
-    education_num = st.slider("Education Num (1-16)", 1, 16, 10)
-    hours_per_week = st.slider("Hours per Week", 1, 99, 40)
-
     workclass = st.selectbox("Workclass", label_encoders["workclass"].classes_)
+    education = st.selectbox("Education", label_encoders["education"].classes_)
     marital_status = st.selectbox("Marital Status", label_encoders["marital-status"].classes_)
     occupation = st.selectbox("Occupation", label_encoders["occupation"].classes_)
     relationship = st.selectbox("Relationship", label_encoders["relationship"].classes_)
     race = st.selectbox("Race", label_encoders["race"].classes_)
     gender = st.selectbox("Gender", label_encoders["gender"].classes_)
+    hours_per_week = st.slider("Hours per week", 1, 99, 40)
     native_country = st.selectbox("Native Country", label_encoders["native-country"].classes_)
 
+    # Encode categorical variables
     workclass_enc = label_encoders["workclass"].transform([workclass])[0]
-    marital_enc = label_encoders["marital-status"].transform([marital_status])[0]
+    education_enc = label_encoders["education"].transform([education])[0]
+    marital_status_enc = label_encoders["marital-status"].transform([marital_status])[0]
     occupation_enc = label_encoders["occupation"].transform([occupation])[0]
     relationship_enc = label_encoders["relationship"].transform([relationship])[0]
     race_enc = label_encoders["race"].transform([race])[0]
     gender_enc = label_encoders["gender"].transform([gender])[0]
+    native_country_enc = label_encoders["native-country"].transform([native_country])[0]
 
-    native_enc = label_encoders["native-country"].transform([native_country])[0]
+    data = {
+        "age": age,
+        "workclass": workclass_enc,
+        "education": education_enc,
+        "marital-status": marital_status_enc,
+        "occupation": occupation_enc,
+        "relationship": relationship_enc,
+        "race": race_enc,
+        "gender": gender_enc,
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": hours_per_week,
+        "native-country": native_country_enc
+    }
 
-   data = {
-    "age": age,
-    "workclass": workclass_enc,
-    "education": education_enc,
-    "marital-status": marital_status_enc,
-    "occupation": occupation_enc,
-    "relationship": relationship_enc,
-    "race": race_enc,
-    "gender": gender_enc,
-    "capital-gain": 0,
-    "capital-loss": 0,
-    "hours-per-week": hours_per_week,
-    "native-country": native_country_enc
-}
-
-    return pd.DataFrame([data_dict])
+    features = pd.DataFrame(data, index=[0])
+    return features
 
 input_df = user_input_features()
 
