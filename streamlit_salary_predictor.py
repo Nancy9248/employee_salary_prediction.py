@@ -39,7 +39,7 @@ def user_input_features():
     occupation = st.selectbox("Occupation", label_encoders["occupation"].classes_)
     relationship = st.selectbox("Relationship", label_encoders["relationship"].classes_)
     race = st.selectbox("Race", label_encoders["race"].classes_)
-    sex = st.selectbox("Sex", label_encoders["sex"].classes_)
+    gender = st.selectbox("Gender", label_encoders["gender"].classes_)
     native_country = st.selectbox("Native Country", label_encoders["native-country"].classes_)
 
     workclass_enc = label_encoders["workclass"].transform([workclass])[0]
