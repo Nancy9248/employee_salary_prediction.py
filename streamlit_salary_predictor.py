@@ -61,7 +61,8 @@ def user_input_features():
         "occupation": occupation_enc,
         "relationship": relationship_enc,
         "race": race_enc,
-        "sex": sex_enc,
+        "gender": gender_enc
+
         "capital-gain": 0,
         "capital-loss": 0,
         "hours-per-week": hours_per_week,
